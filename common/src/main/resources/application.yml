@@ -1,0 +1,16 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8889/eureka/
+  instance:
+    instance-id: ${spring.application.name}:${server.port}
+    non-secure-port: 8889
+    secure-port: 443
+    home-page-url: http://${eureka.instance.instance-id}:${eureka.instance.non-secure-port}
+    health-check-url: ${eureka.instance.home-page-url}/actuator/health/
+    status-page-url: ${eureka.instance.home-page-url}/actuator/info/
+server:
+  port: 8890
+spring:
+  application:
+    name: common
